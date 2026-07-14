@@ -1,0 +1,420 @@
+/* ==========================================
+   1. Design Tokens (Variables) & Resets
+   ========================================== */
+:root {
+    --primary-purple: #a12c7f;    /* Exact SprintUG brand purple */
+    --hover-purple: #852267;      /* Darker shade for hover state */
+    --brand-navy: #002347;        /* Brand dark blue text color */
+    --dark-text: #212529;         
+    --body-bg: #ace0d3;           /* Soft light purple tint */
+    --card-bg: #ffffff;           /* Pure white for the floating section boxes */
+    --border-color: #dfcccc;      /* Soft purple-tinted border line */
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+
+    background-image: url("images/bk.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ==========================================
+   2. Global Typography & Structure
+   ========================================== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Spacing between section cards */
+}
+
+h1, h2, h3 {
+    color: #1a202c;
+    font-weight: 700;
+}
+
+/* Clean, modern divider replacement */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(161, 44, 127, 0.1), rgba(0,0,0,0));
+    margin: 1rem 0;
+}
+
+/* ==========================================
+   3. Sticky Navigation Bar
+   ========================================== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 4rem; 
+    background-color: var(--primary-purple); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--hover-purple); 
+}
+
+nav .logo img {
+    height: 40px; 
+    display: block;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff; 
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    opacity: 0.9;   
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    opacity: 1;    
+}
+
+/* Targets the very last item ("My Account") to style it as a contrasting white button */
+nav ul li:last-child a {
+    display: inline-block; 
+    background-color: #ffffff; 
+    color: var(--primary-purple); 
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+    opacity: 1; 
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav ul li:last-child a:hover {
+    background-color: #f1f3f5 !important; 
+    color: var(--hover-purple) !important; 
+}
+
+/* ==========================================
+   4. Landing / Hero Section
+   ========================================== */
+header {
+    text-align: center;
+    padding: 20rem 4rem;
+    background: radial-gradient(circle at top right, rgba(142, 36, 170, 0.05), transparent), var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+}
+
+header p {
+    color: #64748b;
+    font-size: 1.15rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   5. About Section (Boxed)
+   ========================================== */
+#about-company {
+    text-align: center;
+    max-width: 1000px; 
+    margin: 0 auto;
+    scroll-margin-top: 6rem; 
+    background-color: var(--card-bg); 
+    padding: 4rem 3rem;               
+    border-radius: 24px;              
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px -10px rgba(142, 36, 170, 0.06); 
+}
+
+#about-company h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+#about-company p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   6. Services Section (Boxed Grid)
+   ========================================== */
+#services {
+    scroll-margin-top: 6rem; 
+    background-color: var(--card-bg); 
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px -10px rgba(142, 36, 170, 0.06);
+}
+
+#services h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+#services > p {
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+/* Dashboard grid wrapper */
+#services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+}
+
+/* Inner Service Items */
+#services ul li {
+    background-color: #fdfbfe; 
+    border: 1px solid #f3edf5;
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+#services ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px -5px rgba(142, 36, 170, 0.08);
+    border-color: rgba(161, 44, 127, 0.2);
+}
+
+#services ul li h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+}
+
+#services ul li p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1; 
+}
+
+/* REMOVED: #services ul li::after and #services ul li:hover::after blocks entirely */
+
+/* ==========================================
+   7. Profile Section (Boxed)
+   ========================================== */
+#profile {
+    background-color: var(--card-bg); 
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 4rem 3rem; 
+    max-width: 1200px;  
+    margin: 0 auto;
+    scroll-margin-top: 6rem; 
+    box-shadow: 0 10px 30px -10px rgba(142, 36, 170, 0.06);
+}
+
+#profile h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#profile p {
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+#profile ul {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#profile ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    color: #334155;
+}
+
+#profile ul li::before {
+    content: "•";
+    color: var(--primary-purple);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -4px;
+}
+
+/* ==========================================
+   8. Footer Layout
+   ========================================== */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   9. Media Queries for Mobile Responsiveness
+   ========================================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.2rem 2rem;
+    }
+    
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    header {
+        padding: 12rem 1.5rem; 
+    }
+
+    header h1 {
+        font-size: 2.25rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+        gap: 2rem; 
+    }
+    
+    #about-company, #services, #profile {
+        padding: 2.5rem 1.5rem; 
+    }
+}
+
+#profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    gap: 40px;              
+    margin-bottom: 40px; 
+    width: 100%;            
+}
+
+#profile img {
+    width: 260px;            /* Firm width for the "frame" */
+    height: 320px;           /* Firm height to give it a nice vertical presence */
+    object-fit: cover;       /* Cuts out the empty space on the sides and fills the frame */
+    object-position: center; /* Keeps you perfectly centered in the crop */
+    flex-shrink: 0;          
+    border-radius: 12px;     
+    
+    /* This adds the vertical line on the right side of the image */
+    border-right: 2px solid #e0e0e0; 
+    padding-right: 40px;     /* Space between your image and the line */
+}
+
+.profile-content {
+    flex: 1;                
+}
+
+/* Responsive updates so the line looks good on mobile too */
+@media (max-width: 768px) {
+    #profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+    
+    #profile img {
+        width: 240px;         
+        height: 280px;
+        padding-right: 0;
+        
+        /* Turns the vertical line into a horizontal divider on mobile */
+        border-right: none;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 25px; 
+    }
+
+    #profile ul {
+        text-align: left;    
+    }
+}
+
+header {
+  /* 1. Add a slightly darker overlay so your text stays super readable on the busy image */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), 
+                    url('images/home_1920x1080.png');
+  
+  /* 2. Scale the image to cover the entire space */
+  background-size: cover;
+  background-position: center center; 
+  background-repeat: no-repeat;
+  
+  /* 3. CENTER the content perfectly inside the full-screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  /* 4. FORCE the section to take exactly 100% of the user's screen height */
+  height: 100vh; 
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  
+  /* 5. Make the text crisp and white */
+  color: #ffffff !important; 
+}
+
+/* Ensure the text is large, polished, and stands out */
+header h1 {
+  color: #ffffff !important;
+  font-size: 3.5rem; /* Larger font for the full-screen look */
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Drop shadow to separate text from background */
+}
+
+header p {
+  color: #f0f0f0 !important;
+  font-size: 1.3rem; /* Slightly larger paragraph text */
+  max-width: 800px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
